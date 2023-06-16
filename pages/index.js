@@ -1,20 +1,44 @@
 import Layout from "@/components/Layout";
-import Image from "next/image";
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export default function HomePage() {
 	return (
-		<Layout>
-			<h1>Welcome to My Personal Website!</h1>
-			<MainImage
-				src="/images/rafael-leao-PzmmiWoJHA8-unsplash.jpg"
-				alt="Picture in the sunset with a surfer"
-				width={1000}
-				height={200}
-				layout="responsive"
-			/>
-		</Layout>
+		<AppContainer>
+			<GlobalStyle />
+			<Layout>
+				<MainContent>
+					<Header>Hossein Krouna</Header>
+					<p>Frontend-developer</p>
+				</MainContent>
+			</Layout>
+		</AppContainer>
 	);
 }
 
-const MainImage = styled(Image)``;
+const GlobalStyle = createGlobalStyle`
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+`;
+
+const Header = styled.header``;
+const MainContent = styled.div``;
+
+const AppContainer = styled.div`
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	@media (max-width: 768px) {
+		background-color: black;
+	}
+	@media (min-width: 768px) {
+		background-image: url("/images/rafael-leao-PzmmiWoJHA8-unsplash.jpg");
+		background-size: cover;
+		background-position: center center;
+	}
+	overflow: hidden;
+`;

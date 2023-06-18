@@ -2,8 +2,9 @@ import Sidebar from "@/components/Sidebar";
 import styled from "styled-components";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-// import { ChevronRight, ChevronLeft } from "@mui/icons-material";
-
+import { IconButton, SvgIcon } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 function HomePage() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -45,46 +46,25 @@ function HomePage() {
 			{isSmallScreen && (
 				<Sidebar isOpen={sidebarOpen} onClose={handleSidebarClose} />
 			)}
-			<OvalShapeNavigation>{/* <Triangle /> */}</OvalShapeNavigation>
+			<OvalShapeNavigation>
+				<IconButtonHover sx={{ color: "white" }}>
+					<SvgIcon>
+						<ArrowForwardIosIcon />
+					</SvgIcon>
+				</IconButtonHover>
+				<IconButtonHover sx={{ color: "white" }}>
+					<SvgIcon>
+						<ArrowBackIosNewIcon />
+					</SvgIcon>
+				</IconButtonHover>
+			</OvalShapeNavigation>
 		</AppContainer>
 	);
 }
 
-// const Triangle = styled.div`
-// 	width: 0;
-// 	height: 0;
-// 	border-left: 50px solid white;
-// 	border-right: 50px solid white;
-// 	transform: rotate(45deg);
-
-// 	&:hover {
-// 		background-color: limegreen;
-// 	}
-// `;
-
-// const RightAngle = styled.div`
-// 	position: relative;
-// 	width: 15px;
-// 	height: 15px;
-// 	background-color: white;
-/* transform: rotate(45deg);
-	transition: background-color 0.3s ease; */
-
-/* &:hover {
-		background-color: limegreen;
-	}
-`; */
-
-const LeftAngle = styled.div`
-	position: relative;
-	width: 15px;
-	height: 15px;
-	background-color: white;
-	/* transform: rotate(-45deg);
-	transition: background-color 0.3s ease; */
-
+const IconButtonHover = styled(IconButton)`
 	&:hover {
-		background-color: limegreen;
+		color: limegreen;
 	}
 `;
 
@@ -92,12 +72,15 @@ const OvalShapeNavigation = styled.div`
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
-	width: 55px;
-	height: 120px;
+	width: 50px;
+	height: 94px;
 	border: 2px solid limegreen;
 	border-radius: 40px / 40px;
 	background-color: black;
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
 const NavBarIcon = styled(Image)`

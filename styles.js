@@ -14,7 +14,7 @@ export default createGlobalStyle`
   }
   @media screen and (max-width: 768px) {
     body {
-      background-color: black;
+      background-color: #2B2B2B;
     }
   }
 

@@ -1,9 +1,10 @@
 import Link from "next/link";
+import styled from "styled-components";
 
 function Navbar() {
 	return (
 		<nav>
-			<ul>
+			<NavbarLinks>
 				<li>
 					<Link href="/">Home</Link>
 				</li>
@@ -16,9 +17,11 @@ function Navbar() {
 				<li>
 					<Link href="/contact">Contact</Link>
 				</li>
-			</ul>
+			</NavbarLinks>
 		</nav>
 	);
 }
+
+const NavbarLinks = styled.ul``;
 
 export default Navbar;

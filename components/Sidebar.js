@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { Stack } from "@mui/material";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Sidbar({ isOpen, onClose }) {
 	const sidebarContentRef = useRef(null);
@@ -42,7 +42,12 @@ function Sidbar({ isOpen, onClose }) {
 							/>
 						</ProfileImageWrapper>
 					</ProfileImagePlaceholder>
-					<Stack direction="column" spacing={10}>
+
+					<DescriptionProfile>
+						<NameProfile>Hossein Krouna</NameProfile>
+						<ProfileDescription>Frontend-developer</ProfileDescription>
+					</DescriptionProfile>
+					<Stack mt={8} direction="column" spacing={6}>
 						<SidebarLink href="/">Home</SidebarLink>
 						<SidebarLink href="/about">About</SidebarLink>
 						<SidebarLink href="/projects">Projects</SidebarLink>
@@ -53,6 +58,23 @@ function Sidbar({ isOpen, onClose }) {
 		</SidebarContainer>
 	);
 }
+
+const ProfileDescription = styled.p`
+	margin: 0;
+	color: whitesmoke;
+`;
+
+const NameProfile = styled.h2`
+	margin: 0;
+
+	color: whitesmoke;
+`;
+
+const DescriptionProfile = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
 
 const ProfileImageWrapper = styled.div`
 	margin-top: 10px;
@@ -106,10 +128,12 @@ const ProfileImagePlaceholder = styled.div`
 	margin-bottom: 20px;
 `;
 
-const SidebarLink = styled(Link)`
-	color: white;
+const SidebarLink = styled.a`
+	color: ${(props) =>
+		props.href === useRouter().pathname ? "limegreen" : "whitesmoke"};
 	text-decoration: none;
-	font-size: 16px;
+	font-size: 25px;
+
 	cursor: pointer;
 `;
 

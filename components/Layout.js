@@ -1,10 +1,13 @@
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import Sidebar from "./Sidebar";
-import Image from "next/image";
 import OvalShapeNavigation from "./OvalShapeNavigation";
 import { Grid } from "@mui/material";
+import {
+	Container,
+	NavbarIcon,
+	MainContent,
+} from "../components/styles/StyledLayout";
 
 function Layout({ children }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -77,25 +80,5 @@ function Layout({ children }) {
 		</>
 	);
 }
-
-const Container = styled.div`
-	position: relative;
-	height: 100vh;
-`;
-
-const NavbarIcon = styled(Image)`
-	position: absolute;
-	top: 17px;
-	right: 8px;
-	cursor: pointer;
-`;
-
-const MainContent = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	/* height: 100%; */
-`;
 
 export default Layout;

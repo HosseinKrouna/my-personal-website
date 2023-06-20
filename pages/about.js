@@ -1,6 +1,5 @@
 import Layout from "../components/Layout";
-import OvalShapeNavigation from "@/components/OvalShapeNavigation";
-import PageTransition from "@/components/animation/PageTransition";
+import PageTransition from "../components/animation/PageTransition";
 
 function AboutPage() {
 	return (

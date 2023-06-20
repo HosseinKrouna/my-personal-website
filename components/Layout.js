@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import OvalShapeNavigation from "./OvalShapeNavigation";
 import { Grid } from "@mui/material";
@@ -8,6 +8,7 @@ import {
 	NavbarIcon,
 	MainContent,
 } from "../components/styles/StyledLayout";
+import PageTransition from "./animation/PageTransition";
 
 function Layout({ children }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -32,14 +33,6 @@ function Layout({ children }) {
 		setSidebarOpen(!sidebarOpen);
 		console.log("sidebarOpen", sidebarOpen);
 	}
-
-	// const handleNavbarIconClick = useCallback(() => {
-	// 	setSidebarOpen((prevOpen) => !prevOpen);
-	// }, []);
-
-	// useEffect(() => {
-	// 	console.log("sidebarOpen", sidebarOpen);
-	// }, [sidebarOpen]);
 
 	function handleSidebarClose() {
 		setSidebarOpen(false);
@@ -73,7 +66,9 @@ function Layout({ children }) {
 							height: "100vh",
 						}}
 					>
-						<MainContent>{children}</MainContent>
+						<PageTransition>
+							<MainContent>{children}</MainContent>
+						</PageTransition>
 					</Grid>
 					{isSmallScreen && (
 						<Grid

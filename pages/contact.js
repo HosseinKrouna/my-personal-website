@@ -1,11 +1,12 @@
 import Layout from "../components/Layout";
-import OvalShapeNavigation from "@/components/OvalShapeNavigation";
+import PageTransition from "@/components/animation/PageTransition";
 
 function ContactPage() {
 	return (
 		<Layout>
+			<PageTransition>
 			<h1>Contact Me</h1>
-			<OvalShapeNavigation />
+			</PageTransition>
 		</Layout>
 	);
 }

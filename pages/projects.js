@@ -1,11 +1,12 @@
 import Layout from "../components/Layout";
-import OvalShapeNavigation from "@/components/OvalShapeNavigation";
+import PageTransition from "@/components/animation/PageTransition";
 
 function ProjectsPage() {
 	return (
 		<Layout>
-			<h1>My Projects</h1>
-			<OvalShapeNavigation />
+			<PageTransition>
+				<h1>My Projects</h1>
+			</PageTransition>
 		</Layout>
 	);
 }

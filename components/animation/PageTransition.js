@@ -1,38 +1,35 @@
 import { motion } from "framer-motion";
-import RandomPageAnimation from "../animation/RandomPageAnimation";
+import { useEffect, useState } from "react";
 
-const pageVariants = {
-	initial: {
-		opacity: 0,
-		y: "100%",
-	},
-	enter: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-			ease: "easeInOut",
-		},
-	},
-	exit: {
-		opacity: 0,
-		y: "-100%",
-		transition: {
-			duration: 0.5,
-			ease: "easeInOut",
-		},
-	},
-};
+const animationVariants = [
+	{ scale: 0.8, opacity: 0 },
+	{ scale: 1.2, opacity: 0 },
+	{ rotate: 360, opacity: 0 },
+];
+
+function getRandomVariant() {
+	return animationVariants[
+		Math.floor(Math.random() * animationVariants.length)
+	];
+}
 
 function PageTransition({ children }) {
+	const [randomVariant, setRandomVariant] = useState(getRandomVariant());
+
+	useEffect(() => {
+		setRandomVariant(getRandomVariant());
+	}, [children]);
+
 	return (
 		<motion.div
-			initial="initial"
-			animate="enter"
-			exit="exit"
-			variants={pageVariants}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.5 }}
+			variants={{ animate: randomVariant }}
+			key={JSON.stringify(randomVariant)}
 		>
-			<RandomPageAnimation>{children}</RandomPageAnimation>
+			{children}
 		</motion.div>
 	);
 }

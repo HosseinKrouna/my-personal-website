@@ -10,7 +10,7 @@ import {
 } from "../components/styles/StyledLayout";
 
 function Layout({ children }) {
-	const [sidebarOpen, setSidebarOpen] = useState(true);
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
 
 	useEffect(() => {
@@ -27,13 +27,19 @@ function Layout({ children }) {
 		};
 	}, []);
 
-	const handleNavbarIconClick = useCallback(() => {
-		setSidebarOpen((prevOpen) => !prevOpen);
-	}, []);
-
-	useEffect(() => {
+	function handleNavbarIconClick() {
+		console.log("Navbar Icon clicked");
+		setSidebarOpen(!sidebarOpen);
 		console.log("sidebarOpen", sidebarOpen);
-	}, [sidebarOpen]);
+	}
+
+	// const handleNavbarIconClick = useCallback(() => {
+	// 	setSidebarOpen((prevOpen) => !prevOpen);
+	// }, []);
+
+	// useEffect(() => {
+	// 	console.log("sidebarOpen", sidebarOpen);
+	// }, [sidebarOpen]);
 
 	function handleSidebarClose() {
 		setSidebarOpen(false);

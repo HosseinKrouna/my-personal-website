@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { Stack } from "@mui/material";
 import {
@@ -14,36 +14,8 @@ import {
 	SidebarLink,
 } from "../components/styles/StyledSidebar";
 
-function Sidebar({ onClose }) {
+function Sidebar({ isOpen, onClose }) {
 	const SidebarContainerRef = useRef(null);
-
-	const [isOpen, setIsOpen] = useState(false);
-
-	// const handleClose = useCallback(() => {
-	// 	if (onClose) {
-	// 		onClose();
-	// 	}
-	// }, [onClose]);
-	const toggleSidebar = useCallback(() => {
-		setIsOpen((prevOpen) => !prevOpen);
-	}, []);
-
-	useEffect(() => {
-		function handleOutsideClick(event) {
-			if (
-				SidebarContainerRef.current &&
-				!SidebarContainerRef.current.contains(event.target)
-			) {
-				toggleSidebar();
-			}
-		}
-
-		document.addEventListener("click", handleOutsideClick);
-
-		return () => {
-			document.removeEventListener("click", handleOutsideClick);
-		};
-	}, [toggleSidebar]);
 
 	function handleLinkClick() {
 		if (onClose) {
@@ -58,7 +30,7 @@ function Sidebar({ onClose }) {
 				alt="CloseIcon"
 				width={50}
 				height={50}
-				onClick={toggleSidebar}
+				onClick={onClose}
 			/>
 
 			<SidebarContent>

@@ -12,6 +12,9 @@ import {
 	SidebarContent,
 	ProfileImagePlaceholder,
 	SidebarLink,
+	DownloadButton,
+	SocialMediaIconsContainer,
+	SocialMediaIcon,
 } from "../components/styles/StyledSidebar";
 
 function Sidebar({ isOpen, onClose }) {
@@ -21,6 +24,19 @@ function Sidebar({ isOpen, onClose }) {
 		if (onClose) {
 			onClose();
 		}
+	}
+
+	function handleDownloadClick() {
+		const link = document.createElement("a");
+		link.href = "/assets/CV-Hossein_Krouna.pdf";
+		link.download = "CV_Hossein_Krouna.pdf";
+		link.target = "_blank";
+		link.style.display = "none";
+		document.body.appendChild(link);
+
+		link.click();
+
+		document.body.removeChild(link);
 	}
 
 	return (
@@ -64,6 +80,23 @@ function Sidebar({ isOpen, onClose }) {
 							Contact
 						</SidebarLink>
 					</Stack>
+					<SocialMediaIconsContainer>
+						<SocialMediaIcon
+							src="/icons/linkedin.png"
+							alt="linkedin icon"
+							width={20}
+							height={20}
+						/>
+						<SocialMediaIcon
+							src="/icons/github.png"
+							alt="github icon"
+							width={20}
+							height={20}
+						/>
+					</SocialMediaIconsContainer>
+					<DownloadButton onClick={handleDownloadClick}>
+						Download CV
+					</DownloadButton>
 				</SidebarContentWrapper>
 			</SidebarContent>
 		</SidebarContainer>

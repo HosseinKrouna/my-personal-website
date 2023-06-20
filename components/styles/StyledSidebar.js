@@ -2,6 +2,28 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
+export const SocialMediaIconsContainer = styled.div``;
+
+export const SocialMediaIcon = styled(Image)``;
+
+export const DownloadButton = styled.button`
+	position: absolute;
+	bottom: 26px;
+	height: 58px;
+	width: 154px;
+	border: 2px solid whitesmoke;
+	border-radius: 40px / 40px;
+	background-color: transparent;
+	color: whitesmoke;
+	font-size: 18px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: black;
+	}
+`;
+
 export const ProfileDescription = styled.p`
 	margin: 0;
 	color: whitesmoke;
@@ -30,6 +52,7 @@ export const SidebarContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 `;
 
 export const CloseIcon = styled(Image)`

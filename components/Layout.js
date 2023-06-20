@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Sidebar from "./Sidebar";
 import OvalShapeNavigation from "./OvalShapeNavigation";
 import { Grid } from "@mui/material";
@@ -10,7 +10,7 @@ import {
 } from "../components/styles/StyledLayout";
 
 function Layout({ children }) {
-	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
 
 	useEffect(() => {
@@ -27,9 +27,13 @@ function Layout({ children }) {
 		};
 	}, []);
 
-	function handleNavbarIconClick() {
-		setSidebarOpen(!sidebarOpen);
-	}
+	const handleNavbarIconClick = useCallback(() => {
+		setSidebarOpen((prevOpen) => !prevOpen);
+	}, []);
+
+	useEffect(() => {
+		console.log("sidebarOpen", sidebarOpen);
+	}, [sidebarOpen]);
 
 	function handleSidebarClose() {
 		setSidebarOpen(false);

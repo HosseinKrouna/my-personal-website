@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import Image from "next/image";
 import { Stack } from "@mui/material";
 import {
@@ -14,33 +14,54 @@ import {
 	SidebarLink,
 } from "../components/styles/StyledSidebar";
 
-function Sidbar({ isOpen, onClose }) {
-	const sidebarContentRef = useRef(null);
+function Sidebar({ onClose }) {
+	const SidebarContainerRef = useRef(null);
+
+	const [isOpen, setIsOpen] = useState(false);
+
+	// const handleClose = useCallback(() => {
+	// 	if (onClose) {
+	// 		onClose();
+	// 	}
+	// }, [onClose]);
+	const toggleSidebar = useCallback(() => {
+		setIsOpen((prevOpen) => !prevOpen);
+	}, []);
 
 	useEffect(() => {
-		if (isOpen) {
-			sidebarContentRef.current.style.display = "block";
-		} else {
-			sidebarContentRef.current.style.display = "none";
+		function handleOutsideClick(event) {
+			if (
+				SidebarContainerRef.current &&
+				!SidebarContainerRef.current.contains(event.target)
+			) {
+				toggleSidebar();
+			}
 		}
-	}, [isOpen]);
 
-	function handleClose() {
+		document.addEventListener("click", handleOutsideClick);
+
+		return () => {
+			document.removeEventListener("click", handleOutsideClick);
+		};
+	}, [toggleSidebar]);
+
+	function handleLinkClick() {
 		if (onClose) {
 			onClose();
 		}
 	}
 
 	return (
-		<SidebarContainer isOpen={isOpen}>
+		<SidebarContainer isOpen={isOpen} ref={SidebarContainerRef}>
 			<CloseIcon
 				src={"/icons/close.png"}
 				alt="CloseIcon"
 				width={50}
 				height={50}
-				onClick={handleClose}
+				onClick={toggleSidebar}
 			/>
-			<SidebarContent ref={sidebarContentRef}>
+
+			<SidebarContent>
 				<SidebarContentWrapper>
 					<ProfileImagePlaceholder>
 						<ProfileImageWrapper>
@@ -52,16 +73,24 @@ function Sidbar({ isOpen, onClose }) {
 							/>
 						</ProfileImageWrapper>
 					</ProfileImagePlaceholder>
-
 					<DescriptionProfile>
 						<NameProfile>Hossein Krouna</NameProfile>
 						<ProfileDescription>Frontend-developer</ProfileDescription>
 					</DescriptionProfile>
+
 					<Stack mt={8} direction="column" spacing={6}>
-						<SidebarLink href="/">Home</SidebarLink>
-						<SidebarLink href="/about">About</SidebarLink>
-						<SidebarLink href="/projects">Projects</SidebarLink>
-						<SidebarLink href="/contact">Contact</SidebarLink>
+						<SidebarLink onClick={handleLinkClick} href="/">
+							Home
+						</SidebarLink>
+						<SidebarLink onClick={handleLinkClick} href="/about">
+							About
+						</SidebarLink>
+						<SidebarLink onClick={handleLinkClick} href="/projects">
+							Projects
+						</SidebarLink>
+						<SidebarLink onClick={handleLinkClick} href="/contact">
+							Contact
+						</SidebarLink>
 					</Stack>
 				</SidebarContentWrapper>
 			</SidebarContent>
@@ -69,4 +98,4 @@ function Sidbar({ isOpen, onClose }) {
 	);
 }
 
-export default Sidbar;
+export default Sidebar;

@@ -8,7 +8,7 @@ export const Container = styled.div`
 
 export const NavbarIcon = styled(Image)`
 	position: absolute;
-	top: 17px;
+	top: 38px;
 	right: 8px;
 	cursor: pointer;
 `;

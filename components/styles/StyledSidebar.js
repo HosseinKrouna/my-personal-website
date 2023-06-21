@@ -2,13 +2,27 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-export const SocialMediaIconsContainer = styled.div``;
+export const SocialMediaIconsContainer = styled.div`
+	padding-top: 38px;
+	gap: 14px;
+`;
 
-export const SocialMediaIcon = styled(Image)``;
+export const SocialMediaIconWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	margin-top: 8px;
+	width: 76px;
+	height: 62px;
+	cursor: pointer;
+
+	&:hover {
+		fill: limegreen;
+	}
+`;
 
 export const DownloadButton = styled.button`
 	position: absolute;
-	bottom: 26px;
+	bottom: 72px;
 	height: 58px;
 	width: 154px;
 	border: 2px solid whitesmoke;

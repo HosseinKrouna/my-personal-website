@@ -14,8 +14,10 @@ import {
 	SidebarLink,
 	DownloadButton,
 	SocialMediaIconsContainer,
-	SocialMediaIcon,
+	SocialMediaIconWrapper,
 } from "../components/styles/StyledSidebar";
+import LinkedinIcon from "../components/svg/LinkedinIcon";
+import GitHubIcon from "./svg/GitHubIcon";
 
 function Sidebar({ isOpen, onClose }) {
 	const SidebarContainerRef = useRef(null);
@@ -66,7 +68,7 @@ function Sidebar({ isOpen, onClose }) {
 						<ProfileDescription>Frontend-developer</ProfileDescription>
 					</DescriptionProfile>
 
-					<Stack mt={8} direction="column" spacing={6}>
+					<Stack mt={8} direction="column" spacing={4}>
 						<SidebarLink onClick={handleLinkClick} href="/">
 							Home
 						</SidebarLink>
@@ -81,18 +83,15 @@ function Sidebar({ isOpen, onClose }) {
 						</SidebarLink>
 					</Stack>
 					<SocialMediaIconsContainer>
-						<SocialMediaIcon
-							src="/icons/linkedin.png"
-							alt="linkedin icon"
-							width={20}
-							height={20}
-						/>
-						<SocialMediaIcon
-							src="/icons/github.png"
-							alt="github icon"
-							width={20}
-							height={20}
-						/>
+						<SocialMediaIconWrapper>
+							<LinkedinIcon
+								width="30"
+								height="30"
+								viewBox="0 0 400 400"
+								innerFillColor="white"
+							/>
+							<GitHubIcon width="30" height="30" viewBox="0 0 400 400" />
+						</SocialMediaIconWrapper>
 					</SocialMediaIconsContainer>
 					<DownloadButton onClick={handleDownloadClick}>
 						Download CV

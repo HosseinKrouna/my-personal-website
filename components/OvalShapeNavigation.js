@@ -44,10 +44,10 @@ const IconButtonHover = styled(IconButton)`
 
 const Navigation = styled.div`
 	position: absolute;
-	bottom: 20px;
+	bottom: 71px;
 	right: 20px;
 	width: 50px;
-	height: 94px;
+	height: 113px;
 	border: 2px solid limegreen;
 	border-radius: 40px / 40px;
 	background-color: black;

@@ -56,10 +56,10 @@ function Sidebar({ isOpen, onClose }) {
 					<ProfileImagePlaceholder>
 						<ProfileImageWrapper>
 							<Image
-								src={"/images/man.png"}
+								src={"/images/coder-cat.png"}
 								alt="Profil Man"
-								width={100}
-								height={100}
+								width={150}
+								height={150}
 							/>
 						</ProfileImageWrapper>
 					</ProfileImagePlaceholder>

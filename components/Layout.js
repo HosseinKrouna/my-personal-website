@@ -9,10 +9,13 @@ import {
 	MainContent,
 } from "../components/styles/StyledLayout";
 import PageTransition from "./animation/PageTransition";
+import usePageTransition from "../components/lib/usePageTransition";
 
 function Layout({ children }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+	const animation = usePageTransition(["/", "/about", "/projects", "contact"]);
 
 	useEffect(() => {
 		function handleResize() {
@@ -66,9 +69,9 @@ function Layout({ children }) {
 							height: "100vh",
 						}}
 					>
-						<PageTransition>
-							<MainContent>{children}</MainContent>
-						</PageTransition>
+						<MainContent>
+							<PageTransition animation={animation}>{children}</PageTransition>
+						</MainContent>
 					</Grid>
 					{isSmallScreen && (
 						<Grid

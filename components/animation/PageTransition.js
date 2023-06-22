@@ -1,33 +1,23 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
-const animationVariants = [
-	{ scale: 0.8, opacity: 0 },
-	{ scale: 1.2, opacity: 0 },
-	{ rotate: 360, opacity: 0 },
-];
-
-function getRandomVariant() {
-	return animationVariants[
-		Math.floor(Math.random() * animationVariants.length)
-	];
-}
-
-function PageTransition({ children }) {
-	const [randomVariant, setRandomVariant] = useState(getRandomVariant());
-
-	useEffect(() => {
-		setRandomVariant(getRandomVariant());
-	}, [children]);
+function PageTransition({ children, animation }) {
+	const animations = {
+		fadeIn: { opacity: 0 },
+		slideLeft: { translateX: "100%" },
+		slideUp: { translateY: "100%" },
+	};
+	const randomAnimation =
+		animation ||
+		Object.keys(animations)[
+			Math.floor(Math.random() * Object.keys(animations).length)
+		];
 
 	return (
 		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-			transition={{ duration: 0.5 }}
-			variants={{ animate: randomVariant }}
-			key={JSON.stringify(randomVariant)}
+			initial={animations[randomAnimation]}
+			animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+			transition={{ duration: 1 }}
+			className={randomAnimation}
 		>
 			{children}
 		</motion.div>

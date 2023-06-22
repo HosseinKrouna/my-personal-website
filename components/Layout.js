@@ -15,7 +15,7 @@ function Layout({ children }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-	const animation = usePageTransition(["/", "/about", "/projects", "contact"]);
+	const animation = usePageTransition(["/about", "/projects", "contact"]);
 
 	useEffect(() => {
 		function handleResize() {
@@ -63,9 +63,7 @@ function Layout({ children }) {
 						item
 						xs={12}
 						style={{
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
+							overflow: "auto",
 							height: "100vh",
 						}}
 					>

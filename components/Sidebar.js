@@ -84,13 +84,25 @@ function Sidebar({ isOpen, onClose }) {
 					</Stack>
 					<SocialMediaIconsContainer>
 						<SocialMediaIconWrapper>
-							<LinkedinIcon
-								width="30"
-								height="30"
-								viewBox="0 0 400 400"
-								innerFillColor="white"
-							/>
-							<GitHubIcon width="30" height="30" viewBox="0 0 400 400" />
+							<a
+								href="https://www.linkedin.com/in/krouna-hossein"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<LinkedinIcon
+									width="30"
+									height="30"
+									viewBox="0 0 400 400"
+									innerFillColor="white"
+								/>
+							</a>
+							<a
+								href="https://github.com/HosseinKrouna"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<GitHubIcon width="30" height="30" viewBox="0 0 400 400" />
+							</a>
 						</SocialMediaIconWrapper>
 					</SocialMediaIconsContainer>
 					<DownloadButton onClick={handleDownloadClick}>

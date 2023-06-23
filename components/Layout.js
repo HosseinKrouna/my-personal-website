@@ -31,6 +31,7 @@ function Layout({ children }) {
 		};
 	}, []);
 
+	//FIXME - is not clickable in "aboutpage"
 	function handleNavbarIconClick() {
 		console.log("Navbar Icon clicked");
 		setSidebarOpen(!sidebarOpen);
@@ -55,6 +56,7 @@ function Layout({ children }) {
 							alt="Navbar Icon"
 							width={50}
 							height={50}
+							priority
 							onClick={handleNavbarIconClick}
 						/>
 						<Sidebar isOpen={sidebarOpen} onClose={handleSidebarClose} />

@@ -20,6 +20,7 @@ function AboutPage() {
 	const opacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 	const translateY = useTransform(scrollYProgress, [0.5, 0.7], [50, 0]);
 
+	//FIXME - Deactivate horizontal scrollbars and content even more compact, so that the display width is limited
 	//NOTE - add Fun Fact section
 
 	return (

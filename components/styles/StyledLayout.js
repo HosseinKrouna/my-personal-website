@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Container = styled.div`
 	position: relative;
-	height: 100vh;
+	height: 100%;
 `;
 
 export const NavbarIcon = styled(Image)`
@@ -18,5 +18,4 @@ export const MainContent = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
 `;

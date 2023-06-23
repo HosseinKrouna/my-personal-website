@@ -5,6 +5,10 @@ import {
 	HighlightedText,
 } from "@/components/styles/StyledAbout";
 import { motion, useScroll, useTransform } from "framer-motion";
+import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import WaterDropSharpIcon from "@mui/icons-material/WaterDropSharp";
+import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
 
 const cardVariants = {
 	hidden: { opacity: 0, y: 50 },
@@ -15,6 +19,9 @@ function AboutPage() {
 	const { scrollYProgress } = useScroll();
 	const opacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 	const translateY = useTransform(scrollYProgress, [0.5, 0.7], [50, 0]);
+
+	//NOTE - add Fun Fact section
+
 	return (
 		<Layout>
 			<ContentWrapper>
@@ -121,16 +128,49 @@ function AboutPage() {
 										What <HighlightedText>I Do</HighlightedText>
 									</h2>
 								</Grid>
-								<Grid item xs={12} sm={6}>
-									<h3>Enjoy the Life</h3>
+								<Grid
+									item
+									xs={12}
+									sm={6}
+									sx={{ display: "flex", alignItems: "center" }}
+								>
+									<SelfImprovementIcon
+										sx={{
+											color: "#45a80e",
+											fontSize: 55,
+										}}
+									/>
 									<p>
 										Pellentesque pellentesque, ipsum sit amet auctor accumsan,
 										odio tortor bibendum massa, sit amet ultricies ex lectus
 										scelerisque nibh. Ut non sodales.
 									</p>
 								</Grid>
-								<Grid item xs={12} sm={6}>
-									<h3>Web Design</h3>
+								<Grid item xs={12} mt={8} sm={6}>
+									<DeveloperModeIcon
+										sx={{
+											color: "#45a80e",
+											fontSize: 55,
+										}}
+									/>
+									<p>
+										Pellentesque pellentesque, ipsum sit amet auctor accumsan,
+										odio tortor bibendum massa, sit amet ultricies ex lectus
+										scelerisque nibh. Ut non sodales.
+									</p>
+								</Grid>
+								<Grid
+									item
+									xs={6}
+									sm={3}
+									sx={{ display: "flex", alignItems: "center" }}
+								>
+									<WaterDropSharpIcon
+										sx={{
+											color: "#45a80e",
+											fontSize: 55,
+										}}
+									/>
 									<p>
 										Pellentesque pellentesque, ipsum sit amet auctor accumsan,
 										odio tortor bibendum massa, sit amet ultricies ex lectus
@@ -138,15 +178,12 @@ function AboutPage() {
 									</p>
 								</Grid>
 								<Grid item xs={6} sm={3}>
-									<h3>Copywriting</h3>
-									<p>
-										Pellentesque pellentesque, ipsum sit amet auctor accumsan,
-										odio tortor bibendum massa, sit amet ultricies ex lectus
-										scelerisque nibh. Ut non sodales.
-									</p>
-								</Grid>
-								<Grid item xs={6} sm={3}>
-									<h3>Management</h3>
+									<Diversity1SharpIcon
+										sx={{
+											color: "#45a80e",
+											fontSize: 55,
+										}}
+									/>
 									<p>
 										Pellentesque pellentesque, ipsum sit amet auctor accumsan,
 										odio tortor bibendum massa, sit amet ultricies ex lectus

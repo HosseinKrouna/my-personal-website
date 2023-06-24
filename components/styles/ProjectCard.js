@@ -8,11 +8,13 @@ import {
 } from "@mui/material";
 
 function ProjectCard({ project }) {
+	//NOTE - add Wireframe-Image for "my-website"
+
 	return (
 		<Card
 			sx={{
 				maxWidth: 345,
-				backgroundColor: "rgba(255, 255, 255, 0.8)",
+				backgroundColor: "rgba(255, 255, 255, 0.7)",
 				boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
 			}}
 		>

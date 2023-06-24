@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
-import ProjectCard from "@/components/styles/ProjectCard";
+import ProjectCard from "@/components/ProjectCard";
 import styled from "styled-components";
 
 function ProjectsPage() {

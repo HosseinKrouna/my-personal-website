@@ -9,7 +9,7 @@ import {
 
 function ProjectCard({ project }) {
 	//NOTE - add Wireframe-Image for "my-website"
-
+	//NOTE - add demo-link into projectcards
 	return (
 		<Card
 			sx={{

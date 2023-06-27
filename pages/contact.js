@@ -8,13 +8,6 @@ const DynamicMap = dynamic(() => import("../components/MainMap"), {
 	ssr: false,
 });
 
-const markerLocation = {
-	id: uuidv4(),
-	name: "Frankfurt am Main",
-	lat: 50.1109,
-	lon: 8.6821,
-};
-
 function ContactPage() {
 	const contactData = [
 		{
@@ -43,7 +36,8 @@ function ContactPage() {
 						value={contact.value}
 					/>
 				))}
-				<DynamicMap markerLocation={markerLocation} />
+
+				<DynamicMap />
 			</Layout>
 		</>
 	);

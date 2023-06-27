@@ -8,7 +8,14 @@ import { Stack } from "@mui/material";
 
 function ContactCard({ value, icon }) {
 	const handleCopy = () => {
-		console.log("copy: ", value);
+		navigator.clipboard
+			.writeText(value)
+			.then(() => {
+				console.log("Value successfully copied to the clipboard:", value);
+			})
+			.catch((error) => {
+				console.error("Error copying to clipboard:", error);
+			});
 	};
 
 	return (

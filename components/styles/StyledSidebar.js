@@ -83,9 +83,10 @@ export const SidebarContainer = styled.div`
 	width: 66.666%;
 	height: 100%;
 	background-color: #525252;
-	z-index: 999;
-	transition: right 0.3s ease-in-out;
+	z-index: 1001;
+	transition: right 0.5s ease-in-out;
 	right: ${(props) => (props.isOpen ? "0" : "-66.666%")};
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9);
 `;
 
 export const SidebarContent = styled.div`
@@ -106,6 +107,7 @@ export const ProfileImagePlaceholder = styled.div`
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 20px;
+	box-shadow: 14px 8px 25px rgba(0, 0, 0.9, 0.9);
 `;
 
 export const SidebarLink = styled.a`

@@ -40,7 +40,6 @@ function Sidebar({ isOpen, onClose }) {
 
 		document.body.removeChild(link);
 	}
-	//NOTE - add shadow
 	return (
 		<SidebarContainer isOpen={isOpen} ref={SidebarContainerRef}>
 			<CloseIcon

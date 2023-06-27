@@ -115,6 +115,9 @@ export const SidebarLink = styled.a`
 		props.href === useRouter().pathname ? "limegreen" : "whitesmoke"};
 	text-decoration: none;
 	font-size: 25px;
-
+	&:hover,
+	&:active {
+		color: limegreen;
+	}
 	cursor: pointer;
 `;

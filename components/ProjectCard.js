@@ -8,8 +8,15 @@ import {
 } from "@mui/material";
 
 function ProjectCard({ project }) {
-	//NOTE - add Wireframe-Image for "my-website"
-	//NOTE - add demo-link into projectcards
+	const projectDemoLinks = [
+		{ name: "capstone-project", url: "https://friends-wall.vercel.app/" },
+		{ name: "my-personal-website", url: "https://hossein-krouna.vercel.app/" },
+	];
+
+	const projectLink = projectDemoLinks.find(
+		(demoLink) => demoLink.name === project.name
+	);
+
 	return (
 		<Card
 			sx={{
@@ -19,12 +26,22 @@ function ProjectCard({ project }) {
 			}}
 		>
 			<CardActionArea>
+				{projectLink && (
+					<Button
+						href={projectLink.url}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						Show Demo
+					</Button>
+				)}
+
 				<CardMedia
 					component="img"
-					height="140"
 					image={`/images/${project.name}.png`}
-					alt={`Wireframe ${project.name}`}
+					alt={`Mockup IPhone SE Design ${project.name}`}
 				/>
+
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
 						{project.name}

@@ -1,11 +1,50 @@
 import Layout from "../components/Layout";
+import ContactCard from "../components/ContactCard";
+import { v4 as uuidv4 } from "uuid";
+import styled from "styled-components";
+import dynamic from "next/dynamic";
+
+const DynamicMap = dynamic(() => import("../components/MainMap"), {
+	ssr: false,
+});
 
 function ContactPage() {
+	const contactData = [
+		{
+			icon: "email",
+			value: "example@example.com",
+		},
+		{
+			icon: "phone",
+			value: "+1234567890",
+		},
+		{
+			icon: "location",
+			value: "123 Main St, City, Country",
+		},
+	];
+
 	return (
-		<Layout>
-			<h1>Contact Me</h1>
-		</Layout>
+		<>
+			<Layout>
+				<StyledTitle>Contact Me</StyledTitle>
+				{contactData.map((contact) => (
+					<ContactCard
+						key={uuidv4()}
+						title={contact.title}
+						icon={contact.icon}
+						value={contact.value}
+					/>
+				))}
+
+				<DynamicMap />
+			</Layout>
+		</>
 	);
 }
+
+const StyledTitle = styled.h1`
+	color: whitesmoke;
+`;
 
 export default ContactPage;

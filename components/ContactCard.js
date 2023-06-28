@@ -19,7 +19,7 @@ function ContactCard({ value, icon }) {
 	};
 
 	return (
-		<Card
+        <Card
 			sx={{
 				maxWidth: 345,
 				backgroundColor: "rgba(255, 255, 255, 0.4)",
@@ -35,13 +35,13 @@ function ContactCard({ value, icon }) {
 			<CardContent>
 				<Stack>
 					<IconButton
-						sx={{
+                        sx={{
 							position: "absolute",
 							top: "5px",
 							right: "5px",
 						}}
-						onClick={() => handleCopy(value)}
-					>
+                        onClick={() => handleCopy(value)}
+                        size="large">
 						<FileCopyIcon />
 					</IconButton>
 				</Stack>
@@ -52,7 +52,7 @@ function ContactCard({ value, icon }) {
 				<Typography variant="body2">{value}</Typography>
 			</CardContent>
 		</Card>
-	);
+    );
 }
 
 export default ContactCard;

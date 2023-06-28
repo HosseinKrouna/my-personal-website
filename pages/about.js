@@ -10,24 +10,21 @@ import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 import WaterDropSharpIcon from "@mui/icons-material/WaterDropSharp";
 import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
 import { useEffect, useState } from "react";
-import {
-	createTheme,
-	ThemeProvider,
-	makeStyles,
-} from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 const theme = createTheme();
 
 const useStyles = makeStyles((theme) => ({
-	container: {
+	root: {
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
 	},
 }));
 function AboutPage(props) {
-	const [scrollY, setScrollY] = useState(0);
 	const classes = useStyles();
+	const [scrollY, setScrollY] = useState(0);
 
 	const introCardVariants = {
 		hide: {

@@ -11,57 +11,27 @@ import WaterDropSharpIcon from "@mui/icons-material/WaterDropSharp";
 import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
 import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
 const theme = createTheme();
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-}));
-function AboutPage(props) {
-	const classes = useStyles();
+function AboutPage() {
 	const [scrollY, setScrollY] = useState(0);
-
-	const introCardVariants = {
-		hide: {
-			opacity: 0,
-			x: -500,
-		},
-		show: {
-			opacity: 1,
-			x: 0,
-			transition: {
-				duration: 2,
-			},
-		},
-		scroll: {
-			opacity: 0,
-			x: -500,
-			transition: {
-				duration: 1,
-			},
-		},
-	};
-
-	const handleScroll = () => {
-		setScrollY(window.scrollY);
-	};
-
+	console.log("scrollY", scrollY);
+	//FIXME - scrollY always 0
 	useEffect(() => {
-		const handleScrollEvent = () => {
-			handleScroll();
+		const handleScroll = () => {
+			const scrollPosition =
+				window.pageYOffset || document.documentElement.scrollTop;
+			setScrollY(scrollPosition);
 		};
 
-		window.addEventListener("scroll", handleScrollEvent);
+		console.log("scrollY hat sich geändert:", scrollY);
+		window.addEventListener("scroll", handleScroll);
 
 		return () => {
-			window.removeEventListener("scroll", handleScrollEvent);
+			window.removeEventListener("scroll", handleScroll);
 		};
-	}, []);
+	}, [scrollY]);
 
 	const paragraphTexts = [
 		"Hello there!",
@@ -74,14 +44,17 @@ function AboutPage(props) {
 
 	const renderParagraphsWithMotionDiv = () => {
 		return paragraphTexts.map((text, index) => (
-			<Grid item className={classes.item} key={index}>
+			<Grid item key={index}>
 				<motion.div
-					className="intro-card"
-					variants={introCardVariants}
-					initial="hide"
-					animate={scrollY > 0 ? "scroll" : "show"}
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: index * 0.2 }}
+					style={{
+						opacity: scrollY > 0 ? 0 : 1,
+						transform: `translateX(${scrollY > 0 ? -500 : 0}px)`,
+					}}
 				>
-					{handleMotionDiv(<p>{text}</p>)}
+					<p>{text}</p>
 				</motion.div>
 			</Grid>
 		));
@@ -89,16 +62,17 @@ function AboutPage(props) {
 
 	const handleMotionDiv = (children) => {
 		return (
-			<Grid item className={classes.item}>
-				<motion.div
-					className="intro-card"
-					variants={introCardVariants}
-					initial="hide"
-					animate={scrollY > 0 ? "scroll" : "show"}
-				>
-					{children}
-				</motion.div>
-			</Grid>
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}
+				style={{
+					opacity: scrollY > 0 ? 0 : 1,
+					transform: `translateX(${scrollY > 0 ? -500 : 0}px)`,
+				}}
+			>
+				{children}
+			</motion.div>
 		);
 	};
 
@@ -127,104 +101,82 @@ function AboutPage(props) {
 								)}
 							</Grid>
 						</Box>
+
 						<Box mb={2}>
 							<Grid container spacing={2}>
 								{renderParagraphsWithMotionDiv()}
 							</Grid>
 						</Box>
 						<Grid container spacing={2}>
+							<h3>Age</h3>
+							{handleMotionDiv(<p>40</p>)}
+						</Grid>
+
+						<Grid container spacing={2}>
+							<h3>Residence</h3>
+							{handleMotionDiv(<p>Germany</p>)}
+						</Grid>
+
+						<Grid container spacing={2}>
+							<h3>Address</h3>
+							{handleMotionDiv(<p>88 Some Street, Some Town</p>)}
+						</Grid>
+
+						<Grid container spacing={2}>
+							<h3>Email</h3>
+							{handleMotionDiv(<p>email@example.com</p>)}
+						</Grid>
+
+						<Grid container spacing={2}>
+							<h3>Phone</h3>
+							{handleMotionDiv(<p>+0123 123 456 789</p>)}
+						</Grid>
+
+						<Grid container spacing={2}>
 							{handleMotionDiv(
-								<>
-									<h3>Age</h3>
-									<p>40</p>
-								</>
+								<h2>
+									What <HighlightedText>I Do</HighlightedText>
+								</h2>
 							)}
 						</Grid>
 
 						<Grid container spacing={2}>
 							{handleMotionDiv(
-								<>
-									<h3>Residence</h3>
-									<p>Germany</p>
-								</>
+								<SelfImprovementIcon
+									sx={{
+										color: "#45a80e",
+										fontSize: 55,
+									}}
+								/>
+							)}
+							{handleMotionDiv(
+								<p>
+									I enjoy life because it is full of unexpected possibilities
+									that challenge me and help me grow. Each day brings new
+									experiences, encounters, and lessons that inspire me to strive
+									for my best. Life is a precious journey, and I cherish every
+									moment by living consciously in the present and appreciating
+									the beauty around me.
+								</p>
 							)}
 						</Grid>
 
 						<Grid container spacing={2}>
 							{handleMotionDiv(
-								<>
-									<h3>Address</h3>
-									<p>88 Some Street, Some Town</p>
-								</>
+								<DeveloperModeIcon
+									sx={{
+										color: "#45a80e",
+										fontSize: 55,
+									}}
+								/>
 							)}
-						</Grid>
-
-						<Grid container spacing={2}>
 							{handleMotionDiv(
-								<>
-									<h3>Email</h3>
-									<p>email@example.com</p>
-								</>
-							)}
-						</Grid>
-
-						<Grid container spacing={2}>
-							{handleMotionDiv(
-								<>
-									<h3>Phone</h3>
-									<p>+0123 123 456 789</p>
-								</>
-							)}
-						</Grid>
-
-						<Grid container spacing={2}>
-							{handleMotionDiv(
-								<>
-									<h2>
-										What <HighlightedText>I Do</HighlightedText>
-									</h2>
-								</>
-							)}
-						</Grid>
-
-						<Grid container spacing={2}>
-							{handleMotionDiv(
-								<>
-									<SelfImprovementIcon
-										sx={{
-											color: "#45a80e",
-											fontSize: 55,
-										}}
-									/>
-									<p>
-										I enjoy life because it is full of unexpected possibilities
-										that challenge me and help me grow. Each day brings new
-										experiences, encounters, and lessons that inspire me to
-										strive for my best. Life is a precious journey, and I
-										cherish every moment by living consciously in the present
-										and appreciating the beauty around me.
-									</p>
-								</>
-							)}
-						</Grid>
-
-						<Grid container spacing={2}>
-							{handleMotionDiv(
-								<>
-									<DeveloperModeIcon
-										sx={{
-											color: "#45a80e",
-											fontSize: 55,
-										}}
-									/>
-									<p>
-										I love web development because it empowers me to bring ideas
-										to life and create meaningful digital experiences. It
-										combines my passion for creativity, problem-solving, and
-										constant learning, making every project a rewarding
-										adventure.
-									</p>
-								</>
+								<p>
+									I love web development because it empowers me to bring ideas
+									to life and create meaningful digital experiences. It combines
+									my passion for creativity, problem-solving, and constant
+									learning, making every project a rewarding adventure.
+								</p>
 							)}
 						</Grid>
 
@@ -252,22 +204,22 @@ function AboutPage(props) {
 
 						<Grid container spacing={2}>
 							{handleMotionDiv(
-								<>
-									<Diversity1SharpIcon
-										sx={{
-											color: "#45a80e",
-											fontSize: 55,
-										}}
-									/>
-									<p>
-										I believe in diversity because it enriches our perspectives
-										and fosters inclusive communities. Embracing diverse
-										backgrounds, cultures, and ideas promotes understanding,
-										empathy, and equal opportunities for all. By celebrating
-										differences and creating inclusive spaces, we can build a
-										more harmonious and equitable society.
-									</p>
-								</>
+								<Diversity1SharpIcon
+									sx={{
+										color: "#45a80e",
+										fontSize: 55,
+									}}
+								/>
+							)}
+							{handleMotionDiv(
+								<p>
+									I believe in diversity because it enriches our perspectives
+									and fosters inclusive communities. Embracing diverse
+									backgrounds, cultures, and ideas promotes understanding,
+									empathy, and equal opportunities for all. By celebrating
+									differences and creating inclusive spaces, we can build a more
+									harmonious and equitable society.
+								</p>
 							)}
 						</Grid>
 					</ContentWrapper>

@@ -10,7 +10,7 @@ function HomePage() {
 		<Layout>
 			<WrapperHomepage>
 				<Header>Hossein Krouna</Header>
-				<TitleHomePage>Frontend-developer</TitleHomePage>
+				<TitleHomePage>Web Developer</TitleHomePage>
 			</WrapperHomepage>
 		</Layout>
 	);

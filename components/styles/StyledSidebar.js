@@ -55,10 +55,6 @@ export const DescriptionProfile = styled.div`
 	align-items: center;
 `;
 
-export const ProfileImageWrapper = styled.div`
-	margin-top: 10px;
-`;
-
 export const SidebarContentWrapper = styled.div`
 	width: 100%;
 	max-width: 300px;
@@ -83,6 +79,8 @@ export const SidebarContainer = styled.div`
 	width: 66.666%;
 	height: 100%;
 	background-color: #525252;
+	background-image: url("https://www.transparenttextures.com/patterns/wall-4-light.png");
+	/* background-color: #525252; */
 	z-index: 1001;
 	transition: right 0.5s ease-in-out;
 	right: ${(props) => (props.isOpen ? "0" : "-66.666%")};
@@ -98,16 +96,34 @@ export const SidebarContent = styled.div`
 	align-items: center;
 `;
 
+export const ProfileImageWrapper = styled.div`
+	margin-top: 10px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
 export const ProfileImagePlaceholder = styled.div`
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	border-radius: 50%;
-	background-color: #ccc;
+	background-color: transparent;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 20px;
 	box-shadow: 14px 8px 25px rgba(0, 0, 0.9, 0.9);
+	overflow: hidden;
+`;
+
+export const ProfileImage = styled(Image)`
+	/* width: 100%;
+	height: 100%; */
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
 `;
 
 export const SidebarLink = styled.a`

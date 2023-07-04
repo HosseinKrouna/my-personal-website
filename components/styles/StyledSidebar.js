@@ -14,10 +14,6 @@ export const SocialMediaIconWrapper = styled.div`
 	width: 76px;
 	height: 62px;
 	cursor: pointer;
-
-	&:hover {
-		fill: limegreen;
-	}
 `;
 
 export const DownloadButton = styled.button`
@@ -29,6 +25,9 @@ export const DownloadButton = styled.button`
 	border-radius: 40px / 40px;
 	background-color: transparent;
 	color: whitesmoke;
+	&:hover {
+		color: limegreen;
+	}
 	font-size: 18px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
@@ -78,9 +77,8 @@ export const SidebarContainer = styled.div`
 	right: 0;
 	width: 66.666%;
 	height: 100%;
-	background-color: #525252;
+	background-color: #0a0a0a;
 	background-image: url("https://www.transparenttextures.com/patterns/wall-4-light.png");
-	/* background-color: #525252; */
 	z-index: 1001;
 	transition: right 0.5s ease-in-out;
 	right: ${(props) => (props.isOpen ? "0" : "-66.666%")};
@@ -109,7 +107,7 @@ export const ProfileImagePlaceholder = styled.div`
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
-	background-color: transparent;
+	background-color: #525252;
 	display: flex;
 	align-items: center;
 	justify-content: center;

@@ -31,7 +31,6 @@ function Layout({ children }) {
 		};
 	}, []);
 
-	//FIXME - is not clickable in "aboutpage"
 	function handleNavbarIconClick() {
 		console.log("Navbar Icon clicked");
 		setSidebarOpen(!sidebarOpen);
@@ -64,10 +63,10 @@ function Layout({ children }) {
 					<Grid
 						item
 						xs={12}
-						style={{
-							overflow: "auto",
-							height: "100vh",
-						}}
+						// style={{
+						// 	overflow: "auto",
+						// 	height: "100vh",
+						// }}
 					>
 						<MainContent>
 							<PageTransition animation={animation}>{children}</PageTransition>

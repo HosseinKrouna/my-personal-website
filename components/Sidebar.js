@@ -42,26 +42,6 @@ function Sidebar({ isOpen, onClose }) {
 		document.body.removeChild(link);
 	}
 
-	//--------------------------------------------------------------------------------------------------------------------
-	//NOTE - Serves only to calculate the aspect ratio of images
-	const ProfileImageWidth = 1832;
-	const ProfileImageHeight = 2357;
-
-	const gcd = (a, b) => {
-		if (b === 0) {
-			return a;
-		} else {
-			return gcd(b, a % b);
-		}
-	};
-
-	const ratio = gcd(ProfileImageWidth, ProfileImageHeight);
-
-	const widthRatio = ProfileImageWidth / ratio;
-	const heightRatio = ProfileImageHeight / ratio;
-	console.log(`aspect ratio: ${widthRatio}:${heightRatio}`);
-	//--------------------------------------------------------------------------------------------------------------------
-
 	return (
 		<SidebarContainer isOpen={isOpen} ref={SidebarContainerRef}>
 			<CloseIcon
@@ -114,7 +94,7 @@ function Sidebar({ isOpen, onClose }) {
 									width="30"
 									height="30"
 									viewBox="0 0 400 400"
-									innerFillColor="white"
+									innerFillColor="whitesmoke"
 								/>
 							</a>
 							<a
@@ -122,7 +102,12 @@ function Sidebar({ isOpen, onClose }) {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<GitHubIcon width="30" height="30" viewBox="0 0 400 400" />
+								<GitHubIcon
+									width="30"
+									height="30"
+									viewBox="0 0 400 400"
+									innerFillColor="whitesmoke"
+								/>
 							</a>
 						</SocialMediaIconWrapper>
 					</SocialMediaIconsContainer>

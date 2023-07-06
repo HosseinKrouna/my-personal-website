@@ -1,8 +1,6 @@
-// import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import js from "react-syntax-highlighter/dist/cjs/languages/hljs/javascript";
-import { tomorrow } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 SyntaxHighlighter.registerLanguage("javascript", js);
 

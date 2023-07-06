@@ -2,6 +2,8 @@ import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import styled from "styled-components";
+import { Grid } from "@mui/material";
+import { HighlightedText } from "@/components/styles/StyledAbout";
 
 function ProjectsPage() {
 	const [projects, setProjects] = useState([]);
@@ -31,14 +33,18 @@ function ProjectsPage() {
 
 	return (
 		<Layout>
-			<StyledTitle>My Projects</StyledTitle>
-			<ul>
-				{projects.map((project) => (
-					<StyledProjectListItem key={project.id}>
-						<ProjectCard project={project} />
-					</StyledProjectListItem>
-				))}
-			</ul>
+			<Grid container sx={{ overflow: "auto", height: "100vh" }}>
+				<StyledTitle>
+					<HighlightedText>My</HighlightedText>Projects
+				</StyledTitle>
+				<ul>
+					{projects.map((project) => (
+						<StyledProjectListItem key={project.id}>
+							<ProjectCard project={project} />
+						</StyledProjectListItem>
+					))}
+				</ul>
+			</Grid>
 		</Layout>
 	);
 }

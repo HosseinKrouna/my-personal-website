@@ -14,10 +14,6 @@ export const SocialMediaIconWrapper = styled.div`
 	width: 76px;
 	height: 62px;
 	cursor: pointer;
-
-	&:hover {
-		fill: limegreen;
-	}
 `;
 
 export const DownloadButton = styled.button`
@@ -29,6 +25,9 @@ export const DownloadButton = styled.button`
 	border-radius: 40px / 40px;
 	background-color: transparent;
 	color: whitesmoke;
+	&:hover {
+		color: limegreen;
+	}
 	font-size: 18px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
@@ -55,10 +54,6 @@ export const DescriptionProfile = styled.div`
 	align-items: center;
 `;
 
-export const ProfileImageWrapper = styled.div`
-	margin-top: 10px;
-`;
-
 export const SidebarContentWrapper = styled.div`
 	width: 100%;
 	max-width: 300px;
@@ -82,7 +77,8 @@ export const SidebarContainer = styled.div`
 	right: 0;
 	width: 66.666%;
 	height: 100%;
-	background-color: #525252;
+	background-color: #0a0a0a;
+	background-image: url("https://www.transparenttextures.com/patterns/wall-4-light.png");
 	z-index: 1001;
 	transition: right 0.5s ease-in-out;
 	right: ${(props) => (props.isOpen ? "0" : "-66.666%")};
@@ -98,16 +94,34 @@ export const SidebarContent = styled.div`
 	align-items: center;
 `;
 
+export const ProfileImageWrapper = styled.div`
+	margin-top: 10px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
 export const ProfileImagePlaceholder = styled.div`
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	border-radius: 50%;
-	background-color: #ccc;
+	background-color: #525252;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 20px;
 	box-shadow: 14px 8px 25px rgba(0, 0, 0.9, 0.9);
+	overflow: hidden;
+`;
+
+export const ProfileImage = styled(Image)`
+	/* width: 100%;
+	height: 100%; */
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
 `;
 
 export const SidebarLink = styled.a`
@@ -115,6 +129,9 @@ export const SidebarLink = styled.a`
 		props.href === useRouter().pathname ? "limegreen" : "whitesmoke"};
 	text-decoration: none;
 	font-size: 25px;
-
+	&:hover,
+	&:active {
+		color: limegreen;
+	}
 	cursor: pointer;
 `;

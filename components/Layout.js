@@ -10,6 +10,7 @@ import {
 } from "../components/styles/StyledLayout";
 import PageTransition from "./animation/PageTransition";
 import usePageTransition from "../components/lib/usePageTransition";
+import { ScrollbarStyles } from "./styles/ScrollbarStyles.js";
 
 function Layout({ children }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,7 +32,6 @@ function Layout({ children }) {
 		};
 	}, []);
 
-	//FIXME - is not clickable in "aboutpage"
 	function handleNavbarIconClick() {
 		console.log("Navbar Icon clicked");
 		setSidebarOpen(!sidebarOpen);
@@ -42,8 +42,12 @@ function Layout({ children }) {
 		setSidebarOpen(false);
 	}
 
+	const isContactPage =
+		typeof window !== "undefined" && window.location.pathname === "/contact";
+
 	return (
 		<>
+			<ScrollbarStyles />
 			<Container>
 				<Grid container>
 					<Grid
@@ -61,19 +65,12 @@ function Layout({ children }) {
 						/>
 						<Sidebar isOpen={sidebarOpen} onClose={handleSidebarClose} />
 					</Grid>
-					<Grid
-						item
-						xs={12}
-						style={{
-							overflow: "auto",
-							height: "100vh",
-						}}
-					>
+					<Grid item xs={12}>
 						<MainContent>
 							<PageTransition animation={animation}>{children}</PageTransition>
 						</MainContent>
 					</Grid>
-					{isSmallScreen && (
+					{isSmallScreen && !isContactPage && (
 						<Grid
 							item
 							xs={12}

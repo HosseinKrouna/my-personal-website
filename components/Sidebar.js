@@ -15,6 +15,7 @@ import {
 	DownloadButton,
 	SocialMediaIconsContainer,
 	SocialMediaIconWrapper,
+	ProfileImage,
 } from "../components/styles/StyledSidebar";
 import LinkedinIcon from "../components/svg/LinkedinIcon";
 import GitHubIcon from "./svg/GitHubIcon";
@@ -30,8 +31,8 @@ function Sidebar({ isOpen, onClose }) {
 
 	function handleDownloadClick() {
 		const link = document.createElement("a");
-		link.href = "/assets/CV-Hossein_Krouna.pdf";
-		link.download = "CV_Hossein_Krouna.pdf";
+		link.href = "/assets/cv_hossein-krouna_web-developer.pdf";
+		link.download = "cv_hossein_krouna.pdf";
 		link.target = "_blank";
 		link.style.display = "none";
 		document.body.appendChild(link);
@@ -40,7 +41,7 @@ function Sidebar({ isOpen, onClose }) {
 
 		document.body.removeChild(link);
 	}
-	//NOTE - add shadow
+
 	return (
 		<SidebarContainer isOpen={isOpen} ref={SidebarContainerRef}>
 			<CloseIcon
@@ -55,20 +56,20 @@ function Sidebar({ isOpen, onClose }) {
 				<SidebarContentWrapper>
 					<ProfileImagePlaceholder>
 						<ProfileImageWrapper>
-							<Image
-								src={"/images/coder-cat.png"}
-								alt="Profil Man"
-								width={150}
-								height={150}
+							<ProfileImage
+								src={"/images/personal-website-image_background.png"}
+								alt="Profil Image"
+								width={135}
+								height={174}
 							/>
 						</ProfileImageWrapper>
 					</ProfileImagePlaceholder>
 					<DescriptionProfile>
 						<NameProfile>Hossein Krouna</NameProfile>
-						<ProfileDescription>Frontend-developer</ProfileDescription>
+						<ProfileDescription>Web Developer</ProfileDescription>
 					</DescriptionProfile>
 
-					<Stack mt={8} direction="column" spacing={4}>
+					<Stack mt={5} direction="column" spacing={4}>
 						<SidebarLink onClick={handleLinkClick} href="/">
 							Home
 						</SidebarLink>
@@ -93,7 +94,7 @@ function Sidebar({ isOpen, onClose }) {
 									width="30"
 									height="30"
 									viewBox="0 0 400 400"
-									innerFillColor="white"
+									innerFillColor="whitesmoke"
 								/>
 							</a>
 							<a
@@ -101,7 +102,12 @@ function Sidebar({ isOpen, onClose }) {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<GitHubIcon width="30" height="30" viewBox="0 0 400 400" />
+								<GitHubIcon
+									width="30"
+									height="30"
+									viewBox="0 0 400 400"
+									innerFillColor="whitesmoke"
+								/>
 							</a>
 						</SocialMediaIconWrapper>
 					</SocialMediaIconsContainer>

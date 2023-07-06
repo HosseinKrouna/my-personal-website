@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
 	compiler: {
 		styledComponents: true,
@@ -7,8 +6,14 @@ const nextConfig = {
 	images: {
 		domains: ["res.cloudinary.com"],
 	},
+	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+		if (!isServer) {
+			config.resolve.fallback = {
+				...config.resolve.fallback,
+				fs: false,
+			};
+		}
 
-	webpack(config) {
 		config.module.rules.push({
 			test: /\.svg$/i,
 			issuer: /\.[jt]sx?$/,

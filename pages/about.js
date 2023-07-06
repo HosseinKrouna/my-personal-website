@@ -120,7 +120,7 @@ function AboutPage() {
 						precious home that we must protect. Through sustainable practices,
 						we can Conserve natural resources, counteract climate change and
 						ensure a a healthier future for generations to come. By working
-						towards it with green solutions and awareness, we can create
+						towards it With green solutions and awareness, we can create
 						inspiring and positive change to build a greener and more
 						sustainable world together.
 					</p>

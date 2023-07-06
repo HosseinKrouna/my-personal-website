@@ -39,21 +39,9 @@ const HighlightedText = styled.span`
 
 const WhatIDoStyle = styled.h2``;
 
-const FadeScroll = styled.div`
-	transition: all 400ms;
-	opacity: 0;
-`;
-
 const Fade = styled.div`
 	opacity: 1;
 	font-size: 300px;
 `;
 
-export {
-	ContentWrapper,
-	GreetingText,
-	HighlightedText,
-	WhatIDoStyle,
-	FadeScroll,
-	Fade,
-};
+export { ContentWrapper, GreetingText, HighlightedText, WhatIDoStyle, Fade };

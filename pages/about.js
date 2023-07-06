@@ -4,7 +4,6 @@ import {
 	ContentWrapper,
 	HighlightedText,
 	WhatIDoStyle,
-	FadeScroll,
 	Fade,
 } from "@/components/styles/StyledAbout";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
@@ -175,7 +174,6 @@ function AboutPage() {
 		);
 	};
 
-	//FIXME - NavbarIcon is not accessible at the paragraphText position
 	const paragraphTexts = [
 		"",
 		"",
@@ -234,19 +232,9 @@ function AboutPage() {
 									<Grid container spacing={2} key={index}>
 										<Grid item mb={2}>
 											<Grid container>
-												{scrollTop < 550 ? (
-													<Fade>
-														<motion.p>{text}</motion.p>
-													</Fade>
-												) : (
-													<FadeScroll
-														style={{
-															opacity: Math.max(1 - scrollTop / 2653, 0),
-														}}
-													>
-														<motion.p>{text}</motion.p>
-													</FadeScroll>
-												)}
+												<Fade>
+													<motion.p>{text}</motion.p>
+												</Fade>
 											</Grid>
 										</Grid>
 									</Grid>

@@ -3,6 +3,9 @@ import ContactCard from "../components/ContactCard";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import dynamic from "next/dynamic";
+import { HighlightedText } from "../components/styles/StyledAbout";
+import { Grid } from "@mui/material";
+import OvalShapeNavigation from "@/components/OvalShapeNavigation";
 
 const DynamicMap = dynamic(() => import("../components/MainMap"), {
 	ssr: false,
@@ -25,9 +28,14 @@ function ContactPage() {
 	];
 
 	return (
-		<>
-			<Layout>
-				<StyledTitle>Contact Me</StyledTitle>
+		<Layout>
+			<Grid
+				container
+				sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+			>
+				<StyledTitle>
+					Contact<HighlightedText>Me</HighlightedText>
+				</StyledTitle>
 				{contactData.map((contact) => (
 					<ContactCard
 						key={uuidv4()}
@@ -38,8 +46,11 @@ function ContactPage() {
 				))}
 
 				<DynamicMap />
-			</Layout>
-		</>
+				<OvalShapeNavigation
+					sx={{ position: "absolute", bottom: 0, right: 0 }}
+				/>
+			</Grid>
+		</Layout>
 	);
 }
 

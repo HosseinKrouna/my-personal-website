@@ -1,8 +1,10 @@
 import Layout from "../components/Layout";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography, Paper } from "@mui/material";
 import {
 	ContentWrapper,
 	HighlightedText,
+	GreetingText,
+	WhatIDoStyle,
 	FadeScroll,
 	Fade,
 	MoveLeft,
@@ -15,6 +17,7 @@ import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { height } from "@mui/system";
 
 const theme = createTheme();
 
@@ -50,11 +53,9 @@ function AboutPage() {
 		},
 		{
 			children: (
-				<>
-					<h2>
-						What <HighlightedText>I Do</HighlightedText>
-					</h2>
-				</>
+				<WhatIDoStyle>
+					What <HighlightedText>I Do</HighlightedText>
+				</WhatIDoStyle>
 			),
 		},
 		{
@@ -142,23 +143,51 @@ function AboutPage() {
 	];
 
 	const renderGridContainers = () => {
-		return gridContainers.map((container, index) => {
-			return (
-				<Grid item key={index}>
-					{container.title && <motion.h2>{container.title}</motion.h2>}
-					{container.children}
-				</Grid>
-			);
-		});
+		return (
+			<Grid container spacing={2}>
+				{gridContainers.map((container, index) => (
+					<Grid item key={index} xs={12}>
+						<Grid container justifyContent="center" alignItems="center">
+							<Paper
+								elevation={3}
+								sx={{
+									borderRadius: "12px",
+									padding: "16px",
+									backgroundColor:
+										index === 5 ? "transparent" : "rgba(0, 0, 0, 0.1)",
+									boxShadow:
+										index === 5 ? "none" : "0px 2px 4px rgba(0, 0, 0, 0.2)",
+									display: "flex",
+									flexDirection: "column",
+									alignItems: "center",
+									width: "350px",
+								}}
+							>
+								<Typography variant="h1" component="h2">
+									{container.title}
+								</Typography>
+								{container.children}
+							</Paper>
+						</Grid>
+					</Grid>
+				))}
+			</Grid>
+		);
 	};
+
 	const paragraphTexts = [
-		"Hello there!",
+		"",
 		"",
 		"My name is Hossein Krouna.",
 		"I have a passion for frontend development and strive for continuous growth in this field. When I'm not coding, I transform into a superhero dad, rescuing my two little ones from the daily adventures of life.",
 		"Interestingly, my kids are also starting to show an interest in programming. Recognizing the importance of the IT industry for the future, I am excited to share my knowledge and inspire them on this journey.",
 		"I believe in the power of learning and am committed to expanding my skills every day. With dedication and enthusiasm, I aim to make a positive impact through my contributions in the world of coding.",
 	];
+
+	const headerFontSize = scrollTop >= 196 ? 49 : 58;
+	const headerOpacity = Math.max(1 - scrollTop / 250, 0);
+	const greetingTextFontSize = scrollTop >= 596 ? 28 : 41;
+	const greetingTextOpacity = Math.max(1 - scrollTop / 553, 0);
 
 	//NOTE - add Fun Fact section
 
@@ -175,32 +204,54 @@ function AboutPage() {
 						padding={2}
 					>
 						<ContentWrapper onScroll={handleScroll}>
-							<>
-								<h2>
-									About <HighlightedText>Me</HighlightedText>
-								</h2>
-							</>
+							<motion.div style={{ textAlign: "center" }}>
+								<motion.h2
+									style={{
+										fontSize: headerFontSize,
+										opacity: headerOpacity,
+										marginTop: 253,
+									}}
+								>
+									About<HighlightedText>Me</HighlightedText>
+								</motion.h2>
+							</motion.div>
+							<motion.div style={{ textAlign: "center" }}>
+								<motion.h3
+									style={{
+										fontSize: greetingTextFontSize,
+										opacity: greetingTextOpacity,
+										marginBottom: 0,
+										color: "whitesmoke",
+										marginTop: 183,
+									}}
+								>
+									Hello there!
+								</motion.h3>
+							</motion.div>
 							<motion.div>
 								{paragraphTexts.map((text, index) => (
 									<Grid container spacing={2} key={index}>
-										<Grid item mb={20}>
+										<Grid item mb={2}>
 											<Grid container>
-												{/* {!IsVisible ? (
-		 												<Fade>
-		 													<motion.p>{text}</motion.p>
-		 												</Fade>
-		 											) : (
-		 												<FadeScroll> */}
-												<motion.p>{text}</motion.p>
-												{/* </FadeScroll>
-													)} */}
+												{scrollTop < 550 ? (
+													<Fade>
+														<motion.p>{text}</motion.p>
+													</Fade>
+												) : (
+													<FadeScroll
+														style={{
+															opacity: Math.max(1 - scrollTop / 2653, 0),
+														}}
+													>
+														<motion.p>{text}</motion.p>
+													</FadeScroll>
+												)}
 											</Grid>
 										</Grid>
 									</Grid>
 								))}
 							</motion.div>
-
-							{renderGridContainers()}
+							<Grid container>{renderGridContainers()}</Grid>
 						</ContentWrapper>
 					</Box>
 				</div>

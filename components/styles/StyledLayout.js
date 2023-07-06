@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Container = styled.div`
 	position: relative;
-	height: 100%;
+	height: 100vh;
 `;
 
 export const NavbarIcon = styled(Image)`

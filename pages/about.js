@@ -1,10 +1,6 @@
 import Layout from "../components/Layout";
-import { Grid, Box, Typography, Paper } from "@mui/material";
+import { Grid, Box, Paper } from "@mui/material";
 import {
-	codeSnippetLanguage,
-	codeStringFunction,
-	CodeSnippet,
-	CodeSnippetContainer,
 	ContentWrapper,
 	HighlightedText,
 	WhatIDoStyle,
@@ -18,7 +14,7 @@ import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "@/components/CodeBlock";
 
 const theme = createTheme();
 
@@ -51,11 +47,9 @@ function AboutPage() {
 		{
 			title: <HighlightedText>... good to know</HighlightedText>,
 			children: (
-				<CodeSnippetContainer>
-					<CodeSnippet language={codeSnippetLanguage} style={solarizedlight}>
-						{codeStringFunction}
-					</CodeSnippet>
-				</CodeSnippetContainer>
+				<Grid container>
+					<CodeBlock />
+				</Grid>
 			),
 		},
 		{
@@ -171,9 +165,7 @@ function AboutPage() {
 									width: "350px",
 								}}
 							>
-								<Typography variant="h1" component="h2">
-									{container.title}
-								</Typography>
+								<h2>{container.title}</h2>
 								{container.children}
 							</Paper>
 						</Grid>

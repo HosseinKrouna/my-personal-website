@@ -1,4 +1,24 @@
 import styled from "styled-components";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+
+export const CodeSnippetContainer = styled.div`
+	max-width: 100%;
+	margin: 0 auto;
+`;
+
+export const CodeSnippet = styled(SyntaxHighlighter)`
+	font-size: 14px !important;
+	background-color: black !important;
+	padding: 16px;
+`;
+
+export const codeStringFunction = `function handleCoffeeAvailability(coffeeAvailable) {
+  let [bestColleague, helpsWithOthersProblems, getsInvolved, reactsSluggishly, delayedResponse] = coffeeAvailable 
+    ? [true, true, true, false, false] 
+    : [false, false, false, true, true];
+}`;
+
+export const codeSnippetLanguage = "javascript";
 
 export const ContentWrapper = styled.div`
 	--primary-color: whitesmoke;

@@ -15,15 +15,15 @@ function ContactPage() {
 	const contactData = [
 		{
 			icon: "email",
-			value: "example@example.com",
+			value: "hossein.krouna@googlemail.com",
 		},
 		{
 			icon: "phone",
-			value: "+1234567890",
+			value: "+49 152 51 00 55 15",
 		},
 		{
 			icon: "location",
-			value: "123 Main St, City, Country",
+			value: "Rebhuhnstraße 35, 65933 Frankfurt/M, Germany",
 		},
 	];
 
@@ -44,8 +44,12 @@ function ContactPage() {
 						value={contact.value}
 					/>
 				))}
+				{/* //FIXME - map jerky during animation.
+check z index of map */}
+				<div style={{ zIndex: -1000 }}>
+					<DynamicMap />
+				</div>
 
-				<DynamicMap />
 				<OvalShapeNavigation
 					sx={{ position: "absolute", bottom: 0, right: 0 }}
 				/>

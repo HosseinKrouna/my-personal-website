@@ -1,14 +1,15 @@
 import Layout from "../components/Layout";
 import { Grid, Box, Typography, Paper } from "@mui/material";
 import {
+	codeSnippetLanguage,
+	codeStringFunction,
+	CodeSnippet,
+	CodeSnippetContainer,
 	ContentWrapper,
 	HighlightedText,
-	GreetingText,
 	WhatIDoStyle,
 	FadeScroll,
 	Fade,
-	MoveLeft,
-	Left,
 } from "@/components/styles/StyledAbout";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
@@ -17,7 +18,7 @@ import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { height } from "@mui/system";
+import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const theme = createTheme();
 
@@ -40,16 +41,22 @@ function AboutPage() {
 			children: <p>Germany</p>,
 		},
 		{
-			title: <HighlightedText>Address</HighlightedText>,
-			children: <p>88 Some Street, Some Town</p>,
+			title: <HighlightedText>City</HighlightedText>,
+			children: <p>Frankfurt am Main</p>,
 		},
 		{
-			title: <HighlightedText>Email</HighlightedText>,
-			children: <p>email@example.com</p>,
+			title: <HighlightedText>Childrens</HighlightedText>,
+			children: <p>2</p>,
 		},
 		{
-			title: <HighlightedText>Phone</HighlightedText>,
-			children: <p>+0123 123 456 789</p>,
+			title: <HighlightedText>... good to know</HighlightedText>,
+			children: (
+				<CodeSnippetContainer>
+					<CodeSnippet language={codeSnippetLanguage} style={solarizedlight}>
+						{codeStringFunction}
+					</CodeSnippet>
+				</CodeSnippetContainer>
+			),
 		},
 		{
 			children: (
@@ -59,7 +66,7 @@ function AboutPage() {
 			),
 		},
 		{
-			title: "Self-Improvement",
+			title: "The art of life",
 			children: (
 				<>
 					<SelfImprovementIcon
@@ -69,11 +76,11 @@ function AboutPage() {
 						}}
 					/>
 					<p>
-						I enjoy life because it is full of unexpected possibilities that
-						challenge me and help me grow. Each day brings new experiences,
-						encounters, and lessons that inspire me to strive for my best. Life
-						is a precious journey, and I cherish every moment by living
-						consciously in the present and appreciating the beauty around me.
+						I enjoy life because it is full of unexpected opportunities that
+						challenge me and help me grow. Every day brings new experiences,
+						encounters and lessons that inspire me to do my best. Life is a
+						precious journey and I cherish every moment by consciously living in
+						the present and appreciating the beauty around me.
 					</p>
 				</>
 			),
@@ -89,10 +96,11 @@ function AboutPage() {
 						}}
 					/>
 					<p>
-						I love web development because it empowers me to bring ideas to life
-						and create meaningful digital experiences. It combines my passion
-						for creativity, problem-solving, and constant learning, making every
-						project a rewarding adventure.
+						I am passionate about web development because it allows me to turn
+						ideas into reality and create impactful online experiences. It
+						brings together my love of creativity, problem solving and
+						continuous learning, making each project an exciting journey of
+						growth.
 					</p>
 				</>
 			),
@@ -108,13 +116,13 @@ function AboutPage() {
 						}}
 					/>
 					<p>
-						I stand for environmental conservation because our planet is a
-						precious home we must protect. Through sustainable practices, we can
-						preserve natural resources, mitigate climate change, and ensure a
-						healthier future for generations to come. By advocating for
-						eco-friendly solutions and raising awareness, we can inspire
-						positive change and build a greener, more sustainable world
-						together.
+						I stand for environmental protection, because our planet is one
+						precious home that we must protect. Through sustainable practices,
+						we can Conserve natural resources, counteract climate change and
+						ensure a a healthier future for generations to come. By working
+						towards it with green solutions and awareness, we can create
+						inspiring and positive change to build a greener and more
+						sustainable world together.
 					</p>
 				</>
 			),
@@ -175,6 +183,7 @@ function AboutPage() {
 		);
 	};
 
+	//FIXME - NavbarIcon is not accessible at the paragraphText position
 	const paragraphTexts = [
 		"",
 		"",
